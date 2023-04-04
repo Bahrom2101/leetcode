@@ -1,5 +1,3 @@
-import 'package:collection/collection.dart';
-
 void main() {
   MedianFinder obj = MedianFinder();
   obj.addNum(6);
