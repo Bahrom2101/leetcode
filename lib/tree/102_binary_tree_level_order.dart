@@ -20,17 +20,14 @@ void main() {
 
 List<List<int>> levelOrder(TreeNode? root) {
   if (root == null) return [];
-  Map<int, List<int>> map = {};
-  levelTraverse(root, 0, (value, level) {
-    map[level] = [...(map[level] ?? []), value];
-  });
-  return map.values.toList();
+  Map<int, List<int>> levels = {};
+  levelTraverse(root, 0, levels);
+  return levels.values.toList();
 }
 
-void levelTraverse(
-    TreeNode? tree, int level, Function(int value, int level) action) {
+void levelTraverse(TreeNode? tree, int level, Map<int, List<int>> levels) {
   if (tree == null) return;
-  action(tree.val, level);
-  levelTraverse(tree.left, level + 1, action);
-  levelTraverse(tree.right, level + 1, action);
+  levels[level] = [...(levels[level] ?? []), tree.val];
+  levelTraverse(tree.left, level + 1, levels);
+  levelTraverse(tree.right, level + 1, levels);
 }
