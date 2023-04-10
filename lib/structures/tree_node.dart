@@ -26,7 +26,7 @@ class TreeNode {
       return '$root null\n';
     }
     if (node.left == null && node.right == null) {
-      return '$root ${node.val}\n';
+      return '$root ${node.val}\n + ${node.next?.val}';
     }
     final a = _diagram(
       node.right,
