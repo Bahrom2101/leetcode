@@ -2,8 +2,14 @@ class TreeNode {
   int val;
   TreeNode? left;
   TreeNode? right;
+  TreeNode? next;
 
-  TreeNode([this.val = 0, this.left, this.right]);
+  TreeNode([
+    this.val = 0,
+    this.left,
+    this.right,
+    this.next,
+  ]);
 
   @override
   String toString() {
