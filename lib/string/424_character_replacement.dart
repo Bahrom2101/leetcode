@@ -1,54 +1,35 @@
+import 'dart:math';
+
 void main() {
-  print(characterReplacement('BAAAB', 2));
+  print(characterReplacement('TTADSTRATBBFTT', 2));
 }
 
-//18119565334174252
-
 int characterReplacement(String s, int k) {
-  if (s.length == k) return k;
-  List<int> commons1 = List.filled(s.length, 1);
-  List<int> commons2 = List.filled(s.length, 1);
-  int stepped = 0;
-  for (int i = 0; i < s.length; i++) {
-    String pointer = s[i];
-    for (int j = i + 1; j < s.length; j++) {
-      if (s[j] == pointer && stepped != k) {
-        commons1[i]++;
-      } else if (stepped != k) {
-        commons1[i]++;
-        stepped++;
-      } else if (s[j] == pointer) {
-        commons1[i]++;
-      } else {
-        break;
-      }
+  int maxLength = 0;
+  int maxCount = 0;
+  int left = 0;
+  int right = 0;
+  List<int> freq = List.filled(26, 0, growable: false);
+
+  while (right < s.length) {
+    freq[s.codeUnitAt(right) - 'A'.codeUnitAt(0)]++;
+    maxCount = freq.reduce(max);
+    print('left: $left');
+    print('right: $right');
+    print('freq: $freq');
+    print('maxCount: $maxCount');
+
+    if (right - left + 1 - maxCount > k) {
+      print('here');
+      freq[s.codeUnitAt(left) - 'A'.codeUnitAt(0)]--;
+      left++;
     }
-    stepped = 0;
+
+    maxLength = maxLength > right - left + 1 ? maxLength : right - left + 1;
+    print('maxLength: $maxLength');
+    right++;
+    print('---------------------');
   }
-  for (int i = s.length - 1; i >= 0; i--) {
-    String pointer = s[i];
-    for (int j = i - 1; j >= 0; j--) {
-      if (s[j] == pointer && stepped != k) {
-        commons2[i]++;
-      } else if (stepped != k) {
-        commons2[i]++;
-        stepped++;
-      } else if (s[j] == pointer) {
-        commons2[i]++;
-      } else {
-        break;
-      }
-    }
-    stepped = 0;
-  }
-  int maxCommon = 0;
-  for (int i = 0; i < commons1.length; i++) {
-    if (commons1[i] > maxCommon) {
-      maxCommon = commons1[i];
-    }
-    if (commons2[i] > maxCommon) {
-      maxCommon = commons2[i];
-    }
-  }
-  return maxCommon;
+
+  return maxLength;
 }
