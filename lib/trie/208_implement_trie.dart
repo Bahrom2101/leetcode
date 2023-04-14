@@ -1,4 +1,4 @@
-import 'package:leetcode/structures/trie_node.dart';
+import 'package:leetcode/structures/trie/trie_node.dart';
 
 void main() {
 

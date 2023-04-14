@@ -3,9 +3,9 @@ class TrieNode<T> {
 
   T? key;
 
-  TrieNode? parent;
+  TrieNode<T>? parent;
 
-  Map<int, List<TrieNode>> children = {};
+  Map<T, TrieNode<T>?> children = {};
 
   bool isTerminating = false;
 }
