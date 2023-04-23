@@ -8,9 +8,9 @@ String addBinary(String a, String b) {
   int aIndex = a.length - 1;
   int bIndex = b.length - 1;
   while (aIndex >= 0 && bIndex >= 0) {
-    var _a = int.parse(a[aIndex]);
-    var _b = int.parse(b[bIndex]);
-    switch (_a + _b + inMemory) {
+    var a0 = int.parse(a[aIndex]);
+    var b0 = int.parse(b[bIndex]);
+    switch (a0 + b0 + inMemory) {
       case 0:
         newS = '0$newS';
         break;
