@@ -35,7 +35,7 @@ TreeNode? connect(TreeNode? root) {
 
     for (int i = 0; i < size; i++) {
       TreeNode node = queue.removeFirst();
-      prevNode?.next = node;
+      // prevNode?.next = node;
       prevNode = node;
       if (node.left != null) {
         queue.add(node.left!);

@@ -2,14 +2,8 @@ class TreeNode {
   int val;
   TreeNode? left;
   TreeNode? right;
-  TreeNode? next;
 
-  TreeNode([
-    this.val = 0,
-    this.left,
-    this.right,
-    this.next,
-  ]);
+  TreeNode([this.val = 0, this.left, this.right]);
 
   @override
   String toString() {
@@ -26,7 +20,7 @@ class TreeNode {
       return '$root null\n';
     }
     if (node.left == null && node.right == null) {
-      return '$root ${node.val}\n + ${node.next?.val}';
+      return '$root ${node.val}\n';
     }
     final a = _diagram(
       node.right,
