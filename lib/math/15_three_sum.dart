@@ -4,7 +4,6 @@ void main(List<String> args) {
 
 List<List<int>> threeSum(List<int> nums) {
   Map<String, List<int>> mapList = {};
-  List<List<int>> lists = [];
   int left = 0;
   int right = nums.length;
   while(left != right) {

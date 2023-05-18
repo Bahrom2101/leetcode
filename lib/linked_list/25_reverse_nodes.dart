@@ -12,19 +12,6 @@ void main(List<String> args) {
   print(reverseKGroup1(list, 3));
 }
 
-ListNode? reverseKGroup3(ListNode? head, int k) {
-  int count = 0;
-  ListNode? temp = head;
-  while (head != null) {
-    if (count + 1 == k) {
-      count = 0;
-    } else {
-      count++;
-    }
-    head = head.next;
-  }
-}
-
 ListNode? reverseKGroup2(ListNode? head, int k) {
   ListNode? dummy = ListNode(0, head);
   ListNode? prevGroupTail = dummy;

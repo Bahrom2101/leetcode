@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import '../structures/node.dart';
 
 void main() {

@@ -1,6 +1,7 @@
 import 'package:leetcode/structures/tree_node.dart';
 
 void main() {
+  print('a'.hashCode);
   // var one = TreeNode(1);
   // var two = TreeNode(2);
   // var three = TreeNode(3);

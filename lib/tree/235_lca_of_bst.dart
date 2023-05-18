@@ -2,7 +2,6 @@ import 'package:leetcode/structures/tree_node.dart';
 
 void main() {
   var zero = TreeNode(0);
-  var one = TreeNode(1);
   var two = TreeNode(2);
   var three = TreeNode(3);
   var four = TreeNode(4);

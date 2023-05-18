@@ -14,9 +14,6 @@ int longestPalindrome(List<String> words) {
     }
   }
   print(map);
-  String equals = '';
-  String left = '';
-  String right = '';
   var list = [];
   for (int i = 0; i < words.length; i++) {
     var reversed = reverse(words[i]);

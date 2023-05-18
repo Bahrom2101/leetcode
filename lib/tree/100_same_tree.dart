@@ -20,13 +20,11 @@ bool isSameTree(TreeNode? p, TreeNode? q) {
 }
 
 TreeNode createBinaryTree(bool isSecond) {
-  final zero = TreeNode(0);
   final one = TreeNode(1);
   final four = TreeNode(4);
   final five = TreeNode(5);
   final seven = TreeNode(7);
   final eight = TreeNode(8);
-  final nine = TreeNode(9);
   final two = TreeNode(2);
   final three = TreeNode(3);
   five.left = three;

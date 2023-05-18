@@ -16,16 +16,10 @@ int maxDepth(TreeNode? root) {
 }
 
 TreeNode createBinaryTree() {
-  final zero = TreeNode(0);
   final one = TreeNode(1);
   final five = TreeNode(5);
-  final seven = TreeNode(7);
-  final eight = TreeNode(8);
-  final nine = TreeNode(9);
   final two = TreeNode(2);
   final three = TreeNode(3);
-  final twenty = TreeNode(20);
-  final fifteen = TreeNode(15);
   final four = TreeNode(4);
   one.left = two;
   one.right = three;
