@@ -1,17 +1,20 @@
 void main() {
-  print(removeDuplicates([1,1,2,]));
-  print(removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+  // var nums = [1, 1, 2];
+  List<int> nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+  removeDuplicates(nums);
+  print('nums: $nums');
 }
 
 int removeDuplicates(List<int> nums) {
-  List<int> newList = [];
-  for(int i = 0; i < nums.length - 1; i++) {
-    if(nums[i] != nums[i + 1]) {
-      newList.add(nums[i]);
+  int duplicatesCount = nums.length - nums.toSet().length;
+  int actualListLength = nums.length - duplicatesCount;
+  int iterate = 0;
+  while (nums.length > actualListLength) {
+    if (nums[iterate] == nums[iterate + 1]) {
+      nums.removeAt(iterate + 1);
+    } else {
+      iterate++;
     }
   }
-  if(nums[nums.length - 1] != newList.last) {
-    newList.add(nums[nums.length - 1]);
-  }
-  return newList.length;
+  return actualListLength;
 }
