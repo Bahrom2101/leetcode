@@ -4,8 +4,7 @@ void main() {
 
 List<int> twoSum(List<int> nums, int target) {
   Map<int, int> visited = {};
-  int len = nums.length;
-  for (int i = 0; i < len; ++i) {
+  for (int i = 0; i < nums.length; ++i) {
     int n = nums[i];
     int complement = target - n;
     if (visited.containsKey(complement)) {

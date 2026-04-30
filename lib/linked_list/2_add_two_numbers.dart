@@ -40,7 +40,7 @@ ListNode? addTwoNumbers(ListNode? l1, ListNode? l2) {
     memoize = (memoize + l2.val) ~/ 10;
     l2 = l2.next;
   }
-  if(memoize > 0) {
+  if (memoize > 0) {
     current?.next = ListNode(memoize % 10);
     current = current?.next;
   }
@@ -50,6 +50,7 @@ ListNode? addTwoNumbers(ListNode? l1, ListNode? l2) {
 class ListNode {
   int val;
   ListNode? next;
+
   ListNode([this.val = 0, this.next]);
 
   @override
