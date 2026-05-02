@@ -1,5 +1,5 @@
 void main(List<String> args) {
-  print(isValid(''));
+  print(isValid('()[)((()))'));
 }
 
 bool isValid(String s) {
