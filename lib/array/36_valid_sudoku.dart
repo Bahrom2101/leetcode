@@ -14,24 +14,22 @@ void main() {
 
 bool isValidSudoku(List<List<String>> board) {
   for (int i = 0; i < board.length; i++) {
-    Set<String> vector = {};
-    int vectorNumbers = 0;
+    Set<String> rows = {};
+    Set<String> columns = {};
+    int rowNumbers = 0;
+    int columnNumbers = 0;
     for (int j = 0; j < board[i].length; j++) {
       if (board[i][j] != '.') {
-        vectorNumbers++;
-        vector.add(board[i][j]);
+        rowNumbers++;
+        rows.add(board[i][j]);
+      }
+      if (board[j][i] != '.') {
+        columnNumbers++;
+        columns.add(board[j][i]);
       }
     }
-    if (vectorNumbers != vector.length) return false;
-    vectorNumbers = 0;
-    vector.clear();
-    for (int n = 0; n < board[i].length; n++) {
-      if (board[n][i] != '.') {
-        vectorNumbers++;
-        vector.add(board[n][i]);
-      }
-    }
-    if (vectorNumbers != vector.length) return false;
+    if (rowNumbers != rows.length) return false;
+    if (columnNumbers != columns.length) return false;
   }
   List<Set<String>> blocks = []; // 3x3 squares
   for (int r = 0; r < board.length; r += 3) {
