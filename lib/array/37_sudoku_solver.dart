@@ -15,62 +15,50 @@ void main() {
 }
 
 class Solution {
-  late List<List<String>> board;
-  List<Set<String>> rows = List.generate(9, (e) => <String>{});
-  List<Set<String>> columns = List.generate(9, (e) => <String>{});
-  List<Set<String>> boxes = List.generate(9, (e) => <String>{}); // 3x3 squares
-
-  bool changeCells(int r) {
-    int i = r ~/ 9;
-    int j = r % 9;
-    if (i == 81) return true;
-    if (board[i][j] != '.') return changeCells(r + 1);
-
-    var blockNumber = i ~/ 3 * 3 + j ~/ 3;
-    for (int d = 1; d <= 9; d++) {
-      if (!canReplace(d, rows[i], columns[j], boxes[blockNumber])) continue;
-      board[i][j] = d.toString();
-      rows[i].add(d.toString());
-      columns[j].add(d.toString());
-      boxes[blockNumber].add(d.toString());
-
-      if (changeCells(r + 1)) return true;
-
-      board[i][j] = '.';
-      rows[i].remove(d);
-      columns[j].remove(d);
-      boxes[blockNumber].remove(d);
-    }
-    return false;
-  }
-
-  bool canReplace(int d, Set<String> row, Set<String> col, Set<String> block) {
-    if (row.contains(d.toString()) ||
-        col.contains(d.toString()) ||
-        block.contains(d.toString())) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
   void solveSudoku(List<List<String>> board) {
-    this.board = board;
-    for (int i = 0; i < board.length; i++) {
-      for (int j = 0; j < board[i].length; j++) {
-        if (board[i][j] != '.') {
-          rows[i].add(board[i][j]);
-          boxes[i ~/ 3 * 3 + j ~/ 3].add(board[i][j]);
-        }
-        if (board[j][i] != '.') {
-          columns[i].add(board[j][i]);
-        }
+    final rUsed = List.generate(9, (_) => <int>{});
+    final cUsed = List.generate(9, (_) => <int>{});
+    final sUsed = List.generate(9, (_) => <int>{});
+
+    bool solve(int i) {
+      if (i == 81) return true;
+
+      final r = i ~/ 9;
+      final c = i % 9;
+      if (board[r][c] != '.') return solve(i + 1);
+
+      final s = r ~/ 3 * 3 + c ~/ 3;
+      for (var d = 1; d <= 9; ++d) {
+        if (rUsed[r].contains(d)) continue;
+        if (cUsed[c].contains(d)) continue;
+        if (sUsed[s].contains(d)) continue;
+
+        board[r][c] = d.toString();
+        rUsed[r].add(d);
+        cUsed[c].add(d);
+        sUsed[s].add(d);
+
+        if (solve(i + 1)) return true;
+
+        board[r][c] = '.';
+        rUsed[r].remove(d);
+        cUsed[c].remove(d);
+        sUsed[s].remove(d);
+      }
+      return false;
+    }
+
+    for (var r = 0; r < 9; ++r) {
+      for (var c = 0; c < 9; ++c) {
+        final d = board[r][c].codeUnitAt(0) - 48;
+        if (d < 0) continue;
+        rUsed[r].add(d);
+        cUsed[c].add(d);
+        sUsed[r ~/ 3 * 3 + c ~/ 3].add(d);
       }
     }
+    print(sUsed);
 
-    changeCells(0);
-    for (var e in board) {
-      print(e);
-    }
+    solve(0);
   }
 }
