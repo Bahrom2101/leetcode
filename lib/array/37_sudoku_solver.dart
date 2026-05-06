@@ -16,7 +16,7 @@ void main() {
 
 class Solution {
   void solveSudoku(List<List<String>> board) {
-    final rUsed = List.generate(9, (_) => <int>{});
+    List<Set<int>> rUsed = List.generate(9, (_) => <int>{});
     final cUsed = List.generate(9, (_) => <int>{});
     final sUsed = List.generate(9, (_) => <int>{});
 
