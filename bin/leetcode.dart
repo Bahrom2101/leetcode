@@ -1,20 +1,14 @@
 void main(List<String> arguments) {
-  subsets([4, 5, 3, 6], 1, []);
-  // [5,3,6] [5,3] [5,6] [5] [3,6] [3] [6] []
+  subsets([4, 5, 3, 6, 2], 1, []);
 }
 
-void subsets(
-  List<int> nums,
-  int index,
-  List<int> current,
-) {
-  if (nums.isEmpty) {
+void subsets(List<int> nums, int index, List<int> current) {
+  if (index == nums.length) {
     print(current);
     return;
   }
-  var sublist = nums.sublist(index);
-  current.addAll(sublist);
-  subsets(sublist, index + 1, current);
+  subsets(nums, index + 1, [...current, nums[index]]);
+  subsets(nums, index + 1, current);
 }
 
 void binaryStrings(String current, int n) {
