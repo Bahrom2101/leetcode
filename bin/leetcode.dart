@@ -1,5 +1,13 @@
 void main(List<String> arguments) {
-  subsets([4, 5, 3, 6, 2], 1, []);
+  print(maxElement([3, 1, 7, 2, 5, 7], 0, 5)); // → 7
+}
+
+int maxElement(List<int> arr, int lo, int hi) {
+  if (lo == hi) return arr[lo];
+  int mid = (lo + hi) ~/ 2;
+  int leftMax = maxElement(arr, lo, mid);
+  int rightMax = maxElement(arr, mid + 1, hi);
+  return leftMax > rightMax ? leftMax : rightMax;
 }
 
 void subsets(List<int> nums, int index, List<int> current) {
@@ -20,7 +28,7 @@ void binaryStrings(String current, int n) {
   binaryStrings('${current}1', n - 1);
 }
 
-int fibonacci(int n, [int start = 0, int end = 1]) {
+int fibonacci(int n) {
   if (n <= 1) return n;
   return fibonacci(n - 1) + fibonacci(n - 2);
 }
