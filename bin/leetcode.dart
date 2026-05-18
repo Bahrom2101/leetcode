@@ -1,5 +1,16 @@
 void main(List<String> arguments) {
-  print(maxElement([3, 1, 7, 2, 5, 7], 0, 5)); // → 7
+  print(binarySearch([1, 3, 5, 7, 9], 7, 0, 4)); // → 3
+  print(binarySearch([1, 3, 5, 7, 9], 1, 0, 4)); // → 0
+}
+
+int binarySearch(List<int> arr, int target, int lo, int hi) {
+  if (lo == hi) return arr[lo] == target ? lo : -1;
+  int mid = (lo + hi) ~/ 2;
+  return arr[mid] == target
+      ? mid
+      : arr[mid] > target
+          ? binarySearch(arr, target, lo, mid)
+          : binarySearch(arr, target, mid + 1, hi);
 }
 
 int maxElement(List<int> arr, int lo, int hi) {
