@@ -1,6 +1,16 @@
 void main(List<String> arguments) {
-  print('final res: ${mergeSort([3, 5, 8, 1, 2, 9])}');
-  // print(mergeSort([5, 3, 8, 1, 9, 2, 4, 7, 6]));
+  print(countPaths(3, 3));
+}
+
+int countPaths(int m, int n) {
+  if (m == 1 || n == 1) return 1;
+  return countPaths(m - 1, n) + countPaths(m, n - 1);
+}
+
+int climbStairs(int n) {
+  if (n <= 1) return 1;
+  if (n == 2) return 2;
+  return climbStairs(n - 1) + climbStairs(n - 2);
 }
 
 List<int> mergeSort(List<int> arr) {
