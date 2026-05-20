@@ -1,6 +1,33 @@
 void main(List<String> arguments) {
-  print(binarySearch([1, 3, 5, 7, 9], 7, 0, 4)); // → 3
-  print(binarySearch([1, 3, 5, 7, 9], 1, 0, 4)); // → 0
+  print('final res: ${mergeSort([3, 5, 8, 1, 2, 9])}');
+  // print(mergeSort([5, 3, 8, 1, 9, 2, 4, 7, 6]));
+}
+
+List<int> mergeSort(List<int> arr) {
+  print(arr);
+  if (arr.length <= 1) return arr;
+  if (arr.length == 2) {
+    return arr[0] > arr[1] ? [arr[1], arr[0]] : [arr[0], arr[1]];
+  }
+
+  int mid = arr.length ~/ 2;
+  List<int> left = mergeSort(arr.sublist(0, mid));
+  List<int> right = mergeSort(arr.sublist(mid, arr.length));
+  return mergeHelper(left, right);
+}
+
+List<int> mergeHelper(List<int> left, List<int> right) {
+  var list = <int>[];
+  while (left.isNotEmpty && right.isNotEmpty) {
+    if (left.first <= right.first) {
+      list.add(left.removeAt(0));
+    } else {
+      list.add(right.removeAt(0));
+    }
+  }
+  list.addAll(left);
+  list.addAll(right);
+  return list;
 }
 
 int binarySearch(List<int> arr, int target, int lo, int hi) {
