@@ -1,6 +1,14 @@
 void main(List<String> arguments) {
-  // print(fib(6, {}));
-  print(fibonacci(5));
+  print(climbStairsMemo(6, {}));
+}
+
+int climbStairsMemo(int n, Map<int, int> memo) {
+  if (n <= 1) return 1;
+  if (n == 2) return 2;
+  if (memo.containsKey(n)) return memo[n]!;
+  var climbStairs = climbStairsMemo(n - 1, memo) + climbStairsMemo(n - 2, memo);
+  memo[n] = climbStairs;
+  return climbStairs;
 }
 
 int fib(int n, Map<int, int> memo) {
