@@ -1,5 +1,14 @@
 void main(List<String> arguments) {
-  print(countPaths(3, 3));
+  // print(fib(6, {}));
+  print(fibonacci(5));
+}
+
+int fib(int n, Map<int, int> memo) {
+  if (n <= 1) return n;
+  if (memo.containsKey(n)) return memo[n]!;
+  var fibNumber = fib(n - 1, memo) + fib(n - 2, memo);
+  memo[n] = fibNumber;
+  return fibNumber;
 }
 
 int countPaths(int m, int n) {
