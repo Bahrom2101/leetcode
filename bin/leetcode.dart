@@ -1,5 +1,22 @@
 void main(List<String> arguments) {
-  print(climbStairsMemo(6, {}));
+  permutations([1, 2, 3], []);
+}
+
+void permutations(List<int> nums, List<int> current) {
+  if (current.length == nums.length) {
+    print(current);
+    return;
+  }
+  for (var n in nums) {
+    if (!current.contains(n)) {
+      current.add(n);
+      permutations(nums, current);
+      current.removeLast();
+    }
+  }
+  // permutations(nums, current);
+  // permutations(nums, current);
+  // current.clear();
 }
 
 int climbStairsMemo(int n, Map<int, int> memo) {
