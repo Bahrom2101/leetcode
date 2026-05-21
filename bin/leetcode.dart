@@ -11,7 +11,7 @@ void combinationSum2(List<int> nums, int target, int start, List<int> current) {
     if (i > start && nums[i] == nums[i - 1]) continue;
     if (nums[i] <= target) {
       current.add(nums[i]);
-      combinationSum2(nums..sort(), target - nums[i], i + 1, current);
+      combinationSum2(nums, target - nums[i], i + 1, current);
       current.removeLast();
     }
   }
