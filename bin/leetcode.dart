@@ -1,5 +1,23 @@
 void main(List<String> arguments) {
-  permutations([1, 2, 3], []);
+  combinationSum([8, 2, 3, 6, 7], 8, 0, []);
+  // 8
+  // 2,2,3
+  // 3,3,2
+  // 6,2
+}
+
+void combinationSum(List<int> nums, int target, int start, List<int> current) {
+  if (target == 0) {
+    print(current);
+    return;
+  }
+  for (int i = start; i < nums.length; i++) {
+    if (nums[i] <= target) {
+      current.add(nums[i]);
+      combinationSum(nums, target - nums[i], i, current);
+      current.removeLast();
+    }
+  }
 }
 
 void permutations(List<int> nums, List<int> current) {
@@ -14,9 +32,6 @@ void permutations(List<int> nums, List<int> current) {
       current.removeLast();
     }
   }
-  // permutations(nums, current);
-  // permutations(nums, current);
-  // current.clear();
 }
 
 int climbStairsMemo(int n, Map<int, int> memo) {
