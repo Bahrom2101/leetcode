@@ -1,9 +1,20 @@
 void main(List<String> arguments) {
-  combinationSum([8, 2, 3, 6, 7], 8, 0, []);
-  // 8
-  // 2,2,3
-  // 3,3,2
-  // 6,2
+  combinationSum2([1, 1, 6], 7, 0, []);
+}
+
+void combinationSum2(List<int> nums, int target, int start, List<int> current) {
+  if (target == 0) {
+    print(current);
+    return;
+  }
+  for (int i = start; i < nums.length; i++) {
+    if (i > start && nums[i] == nums[i - 1]) continue;
+    if (nums[i] <= target) {
+      current.add(nums[i]);
+      combinationSum2(nums..sort(), target - nums[i], i + 1, current);
+      current.removeLast();
+    }
+  }
 }
 
 void combinationSum(List<int> nums, int target, int start, List<int> current) {
