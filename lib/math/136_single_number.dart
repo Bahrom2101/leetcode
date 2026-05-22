@@ -1,5 +1,5 @@
 void main() {
-  print(singleNumber([2,3,1,4,3,1,2]));
+  print(singleNumber([2, 3, 1, 4, 3, 1, 2]));
 }
 
 int singleNumber(List<int> nums) {

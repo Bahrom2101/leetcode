@@ -5,7 +5,7 @@ void main() {
   // var list1 = [0];
   // var list2 = <int>[1];
   // merge(list1, 0, list2, 1);
-  var list1 = [2,0];
+  var list1 = [2, 0];
   var list2 = <int>[1];
   merge(list1, 1, list2, 1);
 

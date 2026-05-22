@@ -35,5 +35,6 @@ bool _isSubtree(TreeNode? root, TreeNode? subRoot) {
 
   if (root.val != subRoot.val) return false;
 
-  return _isSubtree(root.left, subRoot.left) && _isSubtree(root.right, subRoot.right);
+  return _isSubtree(root.left, subRoot.left) &&
+      _isSubtree(root.right, subRoot.right);
 }

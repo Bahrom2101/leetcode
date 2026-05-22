@@ -25,11 +25,11 @@ void main() {
 TreeNode? lowestCommonAncestor(TreeNode? root, TreeNode? p, TreeNode? q) {
   TreeNode? node;
   if (root == null || root.left == p || root.right == q) return root;
-  var left = lowestCommonAncestor(root.left, p,q );
+  var left = lowestCommonAncestor(root.left, p, q);
   if (left?.left == p || left?.right == q) {
     return left;
   }
-  var right = lowestCommonAncestor(root.right, p,q );
+  var right = lowestCommonAncestor(root.right, p, q);
   if (right?.left == p || right?.right == q) {
     return right;
   }

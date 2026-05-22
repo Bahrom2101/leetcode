@@ -27,7 +27,6 @@ int longestValidParentheses(String s) {
     }
   }
 
-
   leftMap.forEach((key, value) {
     print('my log: key: $key');
     print('my log: rightMap: $rightMap');

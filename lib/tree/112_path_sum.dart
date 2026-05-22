@@ -31,7 +31,6 @@ bool inorderTraversal(TreeNode? root, int targetSum) {
   return true;
 }
 
-
 void traverseInOrder(TreeNode? root, void Function(int value) action) {
   if (root == null) return;
   action(root.val);

@@ -1,9 +1,8 @@
 import 'heap.dart';
 
 void main() {
-  var heap = Heap(elements: [2,7,4,1,9,1],priority: Priority.max);
+  var heap = Heap(elements: [2, 7, 4, 1, 9, 1], priority: Priority.max);
   print(heap);
-  
 }
 
 bool isMinHeap1<E extends Comparable<dynamic>>(List<E> elements) {

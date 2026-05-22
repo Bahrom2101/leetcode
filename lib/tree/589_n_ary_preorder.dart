@@ -27,7 +27,7 @@ void main() {
 }
 
 List<int> preorder(Node? root) {
-  if(root == null) return [];
+  if (root == null) return [];
   List<int> list = [];
   traversePreOrder(root, list);
   return list;

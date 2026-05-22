@@ -2,8 +2,7 @@ import 'dart:collection';
 import 'dart:math';
 
 void main(List<String> args) {
-  print(lengthOfLongestSubstring(
-      'dsjdvbhjvng'));
+  print(lengthOfLongestSubstring('dsjdvbhjvng'));
 }
 
 int lengthOfLongestSubstring(String s) {

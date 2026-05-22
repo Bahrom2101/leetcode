@@ -9,6 +9,5 @@ void main() {
 }
 
 List<int> findBall(List<List<int>> grid) {
-
   return [];
 }

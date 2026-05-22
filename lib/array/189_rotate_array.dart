@@ -1,5 +1,9 @@
 void main() {
-  var list = [135,5,234,];
+  var list = [
+    135,
+    5,
+    234,
+  ];
   list = [1];
   rotate(list, 54944);
   print(list);

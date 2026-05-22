@@ -7,9 +7,7 @@ bool isMatch(String s, String p) {
   String first = s[0];
 
   for (int i = 0; i < s.length; i++) {
-    if(first != s[i]) {
-
-    }
+    if (first != s[i]) {}
   }
   return match;
 }

@@ -13,40 +13,21 @@ void main() {
 }
 
 bool isValidSudoku(List<List<String>> board) {
-  for (int i = 0; i < board.length; i++) {
-    Set<String> rows = {};
-    Set<String> columns = {};
-    int rowNumbers = 0;
-    int columnNumbers = 0;
-    for (int j = 0; j < board[i].length; j++) {
-      if (board[i][j] != '.') {
-        rowNumbers++;
-        rows.add(board[i][j]);
-      }
-      if (board[j][i] != '.') {
-        columnNumbers++;
-        columns.add(board[j][i]);
-      }
-    }
-    if (rowNumbers != rows.length) return false;
-    if (columnNumbers != columns.length) return false;
-  }
-  List<Set<String>> blocks = []; // 3x3 squares
-  for (int r = 0; r < board.length; r += 3) {
-    for (int c = 0; c < board[r].length; c += 3) {
-      Set<String> block = {};
+  var rows = List.generate(9, (_) => List.filled(9, false));
+  var cols = List.generate(9, (_) => List.filled(9, false));
+  var boxes = List.generate(9, (_) => List.filled(9, false));
 
-      int vectorNumbers = 0;
-      for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-          if (board[r + i][c + j] != '.') {
-            vectorNumbers++;
-            block.add(board[r + i][c + j]);
-          }
+  for (int i = 0; i < 9; i++) {
+    for (int j = 0; j < 9; j++) {
+      if (board[i][j] != '.') {
+        int num = int.parse(board[i][j]) - 1;
+        int boxIndex = (i ~/ 3) * 3 + (j ~/ 3);
+        if (rows[i][num] || cols[j][num] || boxes[boxIndex][num]) {
+          return false;
         }
+
+        rows[i][num] = cols[j][num] = boxes[boxIndex][num] = true;
       }
-      if (vectorNumbers != block.length) return false;
-      blocks.add(block);
     }
   }
   return true;

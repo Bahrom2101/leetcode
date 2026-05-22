@@ -17,7 +17,8 @@ int threeSumClosest(List<int> nums, int target) {
       int sum = nums[i] + nums[left] + nums[right];
       if (sum == target) return sum; // Found exact match, return the sum
       if ((sum - target).abs() < (closestSum - target).abs()) {
-        closestSum = sum; // Update closest sum if the current sum is closer to the target
+        closestSum =
+            sum; // Update closest sum if the current sum is closer to the target
       }
       if (sum < target) {
         left++; // Increment left pointer if sum is smaller than target

@@ -37,16 +37,16 @@ String addQuotesToJSON(String jsonString) {
 
   jsonString =
       jsonString.replaceAllMapped(RegExp(r':([^{},\[\]]+)([,}\]])'), (match) {
-        final value = match.group(1);
-        final punctuation = match.group(2);
-        if (value == 'null' || value == 'true' || value == 'false') {
-          return ': $value$punctuation';
-        } else if (double.tryParse(value ?? '') != null) {
-          return ': $value$punctuation';
-        } else {
-          return ': "$value"$punctuation';
-        }
-      });
+    final value = match.group(1);
+    final punctuation = match.group(2);
+    if (value == 'null' || value == 'true' || value == 'false') {
+      return ': $value$punctuation';
+    } else if (double.tryParse(value ?? '') != null) {
+      return ': $value$punctuation';
+    } else {
+      return ': "$value"$punctuation';
+    }
+  });
 
   return jsonString;
 }

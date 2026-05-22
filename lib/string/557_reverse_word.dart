@@ -8,7 +8,7 @@ String reverseWords(String s) {
   StringBuffer temp = StringBuffer();
   s = ' $s';
   for (int i = s.length - 1; i >= 0; i--) {
-    if(s[i] != ' ') {
+    if (s[i] != ' ') {
       temp.write(s[i]);
     } else {
       buffer = buffer.isNotEmpty ? '$temp $buffer' : '$temp';

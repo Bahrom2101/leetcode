@@ -57,5 +57,4 @@ class Trie<E, T extends Iterable<E>> {
       current = current.parent!;
     }
   }
-
 }

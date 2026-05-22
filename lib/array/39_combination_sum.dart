@@ -6,7 +6,8 @@ void main() {
 class Solution {
   List<List<int>> combinations = [];
   List<List<int>> combinationSum(List<int> candidates, int target) {
-    backtrack(candidates..sort(), target, 0, []);
+    candidates.sort();
+    backtrack(candidates, target, 0, []);
     return combinations;
   }
 

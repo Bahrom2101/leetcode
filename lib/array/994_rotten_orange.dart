@@ -31,7 +31,12 @@ int orangesRotting(List<List<int>> grid) {
   }
 
   int minutes = 0;
-  List<List<int>> directions = [[-1, 0], [0, 1], [1, 0], [0, -1]];
+  List<List<int>> directions = [
+    [-1, 0],
+    [0, 1],
+    [1, 0],
+    [0, -1]
+  ];
 
   while (queue.isNotEmpty) {
     int size = queue.length;
@@ -82,8 +87,7 @@ int orangesRotting1(List<List<int>> grid) {
       }
     }
   }
-  int m = grid.length,
-      n = grid[0].length;
+  int m = grid.length, n = grid[0].length;
 
   Queue<List<int>> queue = Queue();
   queue.add([sr, sc]);
@@ -94,8 +98,7 @@ int orangesRotting1(List<List<int>> grid) {
 
   while (queue.isNotEmpty) {
     List<int> curr = queue.removeFirst();
-    int row = curr[0],
-        col = curr[1];
+    int row = curr[0], col = curr[1];
     if (grid[row][col] == 1 || grid[row][col] == 2) {
       if (map['$row,$col'] == null) {
         map['$row,$col'] = color;

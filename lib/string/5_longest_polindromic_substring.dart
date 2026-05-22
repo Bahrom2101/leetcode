@@ -3,7 +3,6 @@ void main(List<String> args) {
 }
 
 String longestPalindrome(String s) {
-  
   return '';
 }
 

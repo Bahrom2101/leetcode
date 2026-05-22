@@ -18,12 +18,12 @@ String decodeString(String s) {
       int number = determineNumber(sList, lastPoint.index - 1);
       String cut = '';
       sList[lastPoint.index] = '';
-      for(int j = lastPoint.index + 1; j < i; j++) {
+      for (int j = lastPoint.index + 1; j < i; j++) {
         cut = cut + sList[j];
         sList[j] = '';
       }
       String timesCut = cut;
-      while(number > 1) {
+      while (number > 1) {
         timesCut = '$timesCut$cut';
         number--;
       }

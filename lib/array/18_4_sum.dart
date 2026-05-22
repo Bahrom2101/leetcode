@@ -1,5 +1,5 @@
 void main() {
-  print(fourSum([0,0,0,0], 0));
+  print(fourSum([0, 0, 0, 0], 0));
 }
 
 List<List<int>> fourSum(List<int> nums, int target) {
@@ -22,7 +22,7 @@ List<List<int>> fourSum(List<int> nums, int target) {
               break;
             }
           }
-          if(!hasThis) {
+          if (!hasThis) {
             list.add([nums[i], nums[j], nums[left], nums[right]]);
           }
         }

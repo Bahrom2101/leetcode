@@ -1,4 +1,3 @@
-
 void main(List<String> args) {
   ListNode l1 = ListNode(9);
   l1.next = ListNode(9);

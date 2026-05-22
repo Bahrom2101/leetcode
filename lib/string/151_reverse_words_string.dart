@@ -18,7 +18,7 @@ String reverseWords(String s) {
       buffer = '';
     }
   }
-  if(buffer.isNotEmpty) {
+  if (buffer.isNotEmpty) {
     reversed += ' $buffer';
   }
   return reversed.trim();
