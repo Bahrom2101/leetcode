@@ -1,22 +1,29 @@
 void main() {
   var s = Solution();
-  print(s.findSubstring('barfoofoobarthefoobarman', ["bar", "foo", "the"]));
-  print(s.findSubstring('barfoothefoobarman', ["bar", "foo"]));
-  print(s.findSubstring(
-      'wordgoodgoodgoodbestword', ["word", "good", "best", "word"]));
+  // print(s.findSubstring('barfoofoobarthefoobarman', ["bar", "foo", "the"]));
+  // print(s.findSubstring('barfoothefoobarman', ["bar", "foo"]));
+  // print(s.findSubstring('wordgoodgoodgoodbestword', ["word", "good", "best", "word"]));
+  print(s.findSubstring('lingmindraboofooowingdingbarrwingmonkeypoundcake',
+      ["fooo", "barr", "wing", "ding", "wing"]));
 }
 
 class Solution {
   List<int> findSubstring(String s, List<String> words) {
+    int wordLength = words.first.length;
     List<int> startsList = [];
-    var wordsLength = words.join().length;
+    Map<String, int> wordsMap = {};
+    for (var w in words) {
+      if (!wordsMap.containsKey(w)) {
+        wordsMap[w] = 1;
+      } else {
+        wordsMap[w] = wordsMap[w]! + 1;
+      }
+    }
     int i = 0;
-    int j = wordsLength - 1;
-
+    int j = words.length * wordLength - 1;
     while (j < s.length) {
       var subs = s.substring(i, j + 1);
-      bool containAll = doContainAll(subs, words);
-      if (containAll) {
+      if (doContainAll(subs, {...wordsMap}, wordLength)) {
         startsList.add(i);
       }
       i++;
@@ -25,21 +32,15 @@ class Solution {
     return startsList;
   }
 
-  bool doContainAll(String s, List<String> words) {
-    List<String> sList = [];
-    for (int i = 0; i < s.length; i += words.first.length) {
-      sList.add(s.substring(i, i + words.first.length));
-    }
-    for (var w in words) {
-      if (!sList.contains(w)) {
+  bool doContainAll(String subS, Map<String, int> wordsMap, int wordLength) {
+    for (int i = 0; i < subS.length; i += wordLength) {
+      var subString = subS.substring(i, i + wordLength);
+      if (!wordsMap.containsKey(subString)) {
         return false;
+      } else if (wordsMap[subString]! > 1) {
+        wordsMap[subString] = wordsMap[subString]! - 1;
       } else {
-        for (int i = 0; i < sList.length; i++) {
-          if (sList[i] == w) {
-            sList.removeAt(i);
-            break;
-          }
-        }
+        wordsMap.remove(subString);
       }
     }
     return true;
