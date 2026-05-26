@@ -6,7 +6,7 @@ class Stack<E> {
 
   E pop() => _storage.removeLast();
 
-  E get peek => _storage.last;
+  E get last => _storage.last;
 
   bool get isEmpty => _storage.isEmpty;
 
@@ -18,8 +18,6 @@ class Stack<E> {
 
   @override
   String toString() {
-    return '--- Top ---\n'
-        '${_storage.reversed.join('\n')}'
-        '\n-----------';
+    return _storage.reversed.join('');
   }
 }

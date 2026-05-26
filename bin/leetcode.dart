@@ -1,5 +1,13 @@
-void main(List<String> arguments) {
-  combinationSum2([1, 1, 6], 7, 0, []);
+void main() {
+  var maxRange = getMaxRange('((())))', 2, 3);
+  print(maxRange);
+}
+
+int getMaxRange(String s, int i, int j) {
+  if (j - i + 1 > s.length || s[i] == '(' && s[j] != ')') {
+    return j - i - 1;
+  }
+  return getMaxRange(s, i - 1, j + 1);
 }
 
 void combinationSum2(List<int> nums, int target, int start, List<int> current) {
