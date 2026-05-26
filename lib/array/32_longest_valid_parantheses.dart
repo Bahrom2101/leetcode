@@ -5,18 +5,18 @@ void main() {
 
 class Solution {
   int longestValidParentheses(String s) {
-    var stack = <int>[-1];
+    var list = <int>[-1];
     int max = 0;
     for (int i = 0; i < s.length; i++) {
       if (s[i] == '(') {
-        stack.add(i);
+        list.add(i);
       } else {
-        stack.removeLast();
-        if (stack.isEmpty) {
-          stack.add(i);
+        list.removeLast();
+        if (list.isEmpty) {
+          list.add(i);
         } else {
-          if (max < i - stack.last) {
-            max = i - stack.last;
+          if (max < i - list.last) {
+            max = i - list.last;
           }
         }
       }
